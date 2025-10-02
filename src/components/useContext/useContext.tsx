@@ -63,24 +63,19 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     const [creditRef, setCreditRef] = useState<CreditRefResponse | null>(null);
     const [checking, setChecking] = useState(false);
 
-    const openHandle = () => {
-        setSlide(!slide);
-    }
+    const openHandle = () => setSlide(!slide);
 
+    
     const getUserBankAccountDetails = async () => {
         const id = localStorage.getItem('id');
-        if (!id) return;
+        if (!id) return; 
 
         try {
             setIsLoading(true);
             const res = await axios.get<BankAccountResponse>(`https://money-transfer-vp9b.onrender.com/bank-account/${id}`);
-
-            const account = res.data
+            const account = res.data;
             setData(account);
-
-            // keep balance synced
             setCurrentBal(account.userAccount.balance ?? 0);
-
             toast.success("User account loaded");
         } catch (error) {
             let msg = "An error occurred";
@@ -94,7 +89,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         }
     };
 
-
     const fundBalance = async () => {
         const id = localStorage.getItem('id');
         if (!id) {
@@ -103,48 +97,34 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         }
         try {
             const res = await axios.put(`https://money-transfer-vp9b.onrender.com/bank-account/${id}`, { balance });
-            console.log("✅ Response:", res.data);
-
             setCurrentBal(res.data?.newBalance ?? balance);
-
             console.log("Balance updated:", res.data?.newBalance);
         } catch (error) {
-            console.log('error-api', error);
-            let errMsg = 'An error has occur';
+            let errMsg = 'An error has occurred';
             if (isAxiosError(error)) {
                 errMsg = error.response?.data.message;
-                toast.error(`${errMsg}`);
             }
+            toast.error(errMsg);
         }
     };
 
     const searchField = async (filter: SearchFilter): Promise<SearchResult | null> => {
         const params = new URLSearchParams(filter);
-
         try {
             setLoading(true);
-
-            const res = await axios.get<{
-                success: boolean;
-                message: string;
-                result: BankAccount[];
-            }>(
+            const res = await axios.get<{ success: boolean; message: string; result: BankAccount[] }>(
                 "https://money-transfer-vp9b.onrender.com/bank-account/search",
                 { params }
             );
-
             if (!res.data.success || !res.data.result || res.data.result.length === 0) {
                 toast.error(res.data.message || "Bank account not found");
                 return null;
             }
-            setUserBankAccountInfo(res.data.result)
+            setUserBankAccountInfo(res.data.result);
             toast.success(res.data.message || "Bank accounts found");
-            console.log("🔍 Search result:", res.data.result);
             localStorage.setItem('creditUser', res.data.result[0].user);
             return res.data.result;
-
         } catch (error) {
-            console.error("❌ Search error:", error);
             let errs = "An error has occurred";
             if (isAxiosError(error)) {
                 errs = error.response?.data?.message || errs;
@@ -162,7 +142,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 toast.error("No user bank account info found");
                 return;
             }
-
             const obj = {
                 reciever: userBankAcctInfo[0].user,
                 senderEmail: data?.userAccount.lastName,
@@ -174,19 +153,13 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 bank: userBankAcctInfo[0].bankName,
                 country: userBankAcctInfo[0].country,
             };
-
-            console.log(obj);
-
             const alertForCredit = await axios.post(
                 "https://money-transfer-vp9b.onrender.com/credit/create",
                 obj
             );
-
             console.log("✅ Credit alert response:", alertForCredit.data);
-
             toast.success("Credit alert created successfully");
         } catch (error) {
-            console.log("error api", error);
             let err = "An error has occurred";
             if (isAxiosError(error)) {
                 err = error.response?.data.message || err;
@@ -201,7 +174,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 toast.error("No user bank account info found");
                 return;
             }
-
             const obj = {
                 sender: data?.userAccount.user,
                 recieverEmail: userBankAcctInfo[0].email,
@@ -215,29 +187,24 @@ export const AppProvider = ({ children }: AppProviderProps) => {
             };
             const res = await axios.post('https://money-transfer-vp9b.onrender.com/debit/create', obj);
             console.log(res.data);
-
         } catch (error) {
-            console.log("error api", error);
             let err = "An error has occurred";
             if (isAxiosError(error)) {
                 err = error.response?.data.message || err;
             }
             toast.error(err);
         }
-    }
+    };
 
     const fetchDebitTransaction = async () => {
         const id = localStorage.getItem('id');
-        console.log("User ID I am sending:", id);
+        if (!id) return; 
         try {
             setIsRolling(true);
             const res = await axios.get<DebitRefResponse>(`https://money-transfer-vp9b.onrender.com/debit/${id}`);
             seDebitRef(res.data);
-            // console.log(res);
-
             toast.success(`${res.data.message}`);
         } catch (error) {
-            console.log("error api", error);
             let err = "An error has occurred";
             if (isAxiosError(error)) {
                 err = error.response?.data.message || err;
@@ -246,40 +213,30 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         } finally {
             setIsRolling(false);
         }
-    }
+    };
 
     const fetchCreditTransaction = async () => {
         const id = localStorage.getItem('creditUser');
+        if (!id) return; 
         try {
             setChecking(true);
-            console.log("📡 Fetching transactions for ID:", id);
             const res = await axios.get<CreditRefResponse>(`https://money-transfer-vp9b.onrender.com/credit/${id}`);
-            console.log("✅ Response:", res.data);
             setCreditRef(res.data);
             toast.success(`${res.data.message}`);
         } catch (error) {
-            console.log("error api", error);
             let err = "An error has occurred";
             if (isAxiosError(error)) {
                 err = error.response?.data.message || err;
             }
             toast.error(err);
         } finally {
-            setChecking(false)
+            setChecking(false);
         }
     };
 
-    useEffect(() => {
-        fetchDebitTransaction()
-    }, []);
-
-    useEffect(() => {
-        getUserBankAccountDetails();
-    }, []);
-
-    useEffect(() => {
-        fetchCreditTransaction();
-    }, []);
+    useEffect(() => { fetchDebitTransaction(); }, []);
+    useEffect(() => { getUserBankAccountDetails(); }, []);
+    useEffect(() => { fetchCreditTransaction(); }, []);
 
     return (
         <AppContext.Provider
@@ -294,22 +251,24 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 currentBal,
                 setBankName,
                 setAccountNo,
-                bankName, checking,
+                bankName,
                 accountNo,
+                checking,
                 searchField,
                 loading,
                 userBankAcctInfo,
-                fund, isRolling,
+                fund,
                 setFund,
+                isRolling,
                 credit,
                 debitTransfer,
                 debitRef,
-                creditRef
+                creditRef,
             }}>
             {children}
         </AppContext.Provider>
-    )
-}
+    );
+};
 
 export const useAppContext = () => {
     const context = useContext(AppContext);
