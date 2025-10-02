@@ -36,7 +36,7 @@ export function DebitHistory() {
         }
 
         try {
-            await axios.delete(`https://money-transfer-xbub.onrender.com/debit/${cleanId}`);
+            await axios.delete(`https://money-transfer-vp9b.onrender.com/debit/${cleanId}`);
             toast.success("Debit reference deleted");
         } catch (error) {
             let err = "An error has occurred";

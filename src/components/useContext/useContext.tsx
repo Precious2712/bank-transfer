@@ -73,7 +73,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
         try {
             setIsLoading(true);
-            const res = await axios.get<BankAccountResponse>(`https://money-transfer-xbub.onrender.com/bank-account/${id}`);
+            const res = await axios.get<BankAccountResponse>(`https://money-transfer-vp9b.onrender.com/bank-account/${id}`);
 
             const account = res.data
             setData(account);
@@ -102,7 +102,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
             return;
         }
         try {
-            const res = await axios.put(`https://money-transfer-xbub.onrender.com/bank-account/${id}`, { balance });
+            const res = await axios.put(`https://money-transfer-vp9b.onrender.com/bank-account/${id}`, { balance });
             console.log("✅ Response:", res.data);
 
             setCurrentBal(res.data?.newBalance ?? balance);
@@ -129,7 +129,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 message: string;
                 result: BankAccount[];
             }>(
-                "https://money-transfer-xbub.onrender.com/bank-account/search",
+                "https://money-transfer-vp9b.onrender.com/bank-account/search",
                 { params }
             );
 
@@ -178,7 +178,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
             console.log(obj);
 
             const alertForCredit = await axios.post(
-                "https://money-transfer-xbub.onrender.com/credit/create",
+                "https://money-transfer-vp9b.onrender.com/credit/create",
                 obj
             );
 
@@ -213,7 +213,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 recieverBankName: userBankAcctInfo[0].bankName,
                 country: userBankAcctInfo[0].country,
             };
-            const res = await axios.post('https://money-transfer-xbub.onrender.com/debit/create', obj);
+            const res = await axios.post('https://money-transfer-vp9b.onrender.com/debit/create', obj);
             console.log(res.data);
 
         } catch (error) {
@@ -231,7 +231,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         console.log("User ID I am sending:", id);
         try {
             setIsRolling(true);
-            const res = await axios.get<DebitRefResponse>(`https://money-transfer-xbub.onrender.com/debit/${id}`);
+            const res = await axios.get<DebitRefResponse>(`https://money-transfer-vp9b.onrender.com/debit/${id}`);
             seDebitRef(res.data);
             // console.log(res);
 
@@ -253,7 +253,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         try {
             setChecking(true);
             console.log("📡 Fetching transactions for ID:", id);
-            const res = await axios.get<CreditRefResponse>(`https://money-transfer-xbub.onrender.com/credit/${id}`);
+            const res = await axios.get<CreditRefResponse>(`https://money-transfer-vp9b.onrender.com/credit/${id}`);
             console.log("✅ Response:", res.data);
             setCreditRef(res.data);
             toast.success(`${res.data.message}`);
