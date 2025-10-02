@@ -34,7 +34,7 @@ export function LoginComp() {
     async function onSubmit(values: Login) {
         try {
             setIsLoading(true);
-            const res = await axios.post('http://localhost:3000/auth/login', values);
+            const res = await axios.post('https://money-transfer-xbub.onrender.com/auth/login', values);
             if (res) {
                 toast.success(`${res.data.email} has log in`);
                 router.push('/bank-account');
