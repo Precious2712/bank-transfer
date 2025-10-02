@@ -1,0 +1,18 @@
+.roll {
+  animation: rolling 3s linear infinite;
+}
+
+@keyframes rolling {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0 0 5px rgba(255, 255, 0, 0.2); /* dim yellow light */
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.7); /* medium bright */
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 0 0 35px rgba(255, 255, 0, 1); /* full bright */
+  }
+}

@@ -1,0 +1,27 @@
+.tableWrapper {
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+    @media (min-width: 1024px) {
+        width: 100%;
+    }
+}
+
+.containerItem {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    /* allow scroll on ALL screens */
+    background-color: transparent;
+    height: 80vh;
+
+    /* hide scrollbar but keep scrolling */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE & Edge */
+}
