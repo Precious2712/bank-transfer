@@ -33,7 +33,7 @@ export function SignupComp() {
     async function onSubmit(values: Signup) {
         try {
             setIsLoading(true);
-            const res = await axios.post('https://money-transfer-vp9b.onrender.com/auth/create', values);
+            const res = await axios.post('https://money-transfer-1.onrender.com/auth/create', values);
             if (res) {
                 toast.success('You can proceed to log in');
             }

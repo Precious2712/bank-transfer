@@ -72,7 +72,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
         try {
             setIsLoading(true);
-            const res = await axios.get<BankAccountResponse>(`https://money-transfer-vp9b.onrender.com/bank-account/${id}`);
+            const res = await axios.get<BankAccountResponse>(`https://money-transfer-1.onrender.com/bank-account/${id}`);
             const account = res.data;
             setData(account);
             setCurrentBal(account.userAccount.balance ?? 0);
@@ -96,7 +96,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
             return;
         }
         try {
-            const res = await axios.put(`https://money-transfer-vp9b.onrender.com/bank-account/${id}`, { balance });
+            const res = await axios.put(`https://money-transfer-1.onrender.com/bank-account/${id}`, { balance });
             setCurrentBal(res.data?.newBalance ?? balance);
             console.log("Balance updated:", res.data?.newBalance);
         } catch (error) {
@@ -113,7 +113,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         try {
             setLoading(true);
             const res = await axios.get<{ success: boolean; message: string; result: BankAccount[] }>(
-                "https://money-transfer-vp9b.onrender.com/bank-account/search",
+                "https://money-transfer-1.onrender.com/bank-account/search",
                 { params }
             );
             if (!res.data.success || !res.data.result || res.data.result.length === 0) {
@@ -154,7 +154,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 country: userBankAcctInfo[0].country,
             };
             const alertForCredit = await axios.post(
-                "https://money-transfer-vp9b.onrender.com/credit/create",
+                "https://money-transfer-1.onrender.com/credit/create",
                 obj
             );
             console.log("✅ Credit alert response:", alertForCredit.data);
@@ -185,7 +185,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 recieverBankName: userBankAcctInfo[0].bankName,
                 country: userBankAcctInfo[0].country,
             };
-            const res = await axios.post('https://money-transfer-vp9b.onrender.com/debit/create', obj);
+            const res = await axios.post('https://money-transfer-1.onrender.com/debit/create', obj);
             console.log(res.data);
         } catch (error) {
             let err = "An error has occurred";
@@ -201,7 +201,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         if (!id) return; 
         try {
             setIsRolling(true);
-            const res = await axios.get<DebitRefResponse>(`https://money-transfer-vp9b.onrender.com/debit/${id}`);
+            const res = await axios.get<DebitRefResponse>(`https://money-transfer-1.onrender.com/debit/${id}`);
             seDebitRef(res.data);
             toast.success(`${res.data.message}`);
         } catch (error) {
@@ -220,7 +220,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         if (!id) return; 
         try {
             setChecking(true);
-            const res = await axios.get<CreditRefResponse>(`https://money-transfer-vp9b.onrender.com/credit/${id}`);
+            const res = await axios.get<CreditRefResponse>(`https://money-transfer-1.onrender.com/credit/${id}`);
             setCreditRef(res.data);
             toast.success(`${res.data.message}`);
         } catch (error) {

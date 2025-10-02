@@ -38,7 +38,7 @@ export function CreditHistory() {
         }
 
         try {
-            await axios.delete(`https://money-transfer-vp9b.onrender.com/credit/${cleanId}`);
+            await axios.delete(`https://money-transfer-1.onrender.com/credit/${cleanId}`);
             toast.success("Debit reference deleted");
         } catch (error) {
             let err = "An error has occurred";
