@@ -87,7 +87,7 @@ export function DebitHistory() {
                                     {txn.debitReceipt}
                                 </td>
                                 <td className="p-2">
-                                    <button onClick={() => handleDeleteDebitRef(txn._id)} className="px-3 py-1 bg-red-500 text-white rounded-lg text-sm">
+                                    <button onClick={() => handleDeleteDebitRef(txn._id)} className="px-3 py-1 bg-red-500 text-white rounded-lg text-sm cursor-pointer">
                                         Delete
                                     </button>
                                 </td>
