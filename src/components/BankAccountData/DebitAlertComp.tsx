@@ -25,10 +25,8 @@ export function DebitAlertComp() {
         const result = await searchField(filter);
         if (result) {
             console.log('Search successful:', result);
-            // You could do additional processing here if needed
         } else {
             console.log('Search failed or no results');
-            // Handle the case where search failed
         }
     };
 
@@ -147,7 +145,6 @@ export function DebitAlertComp() {
                         </div>
                     )}
 
-                    {/* Amount Input */}
                     <div className="space-y-2">
                         <label className="text-sm font-medium text-white">Transfer Amount</label>
                         <div className="relative">
@@ -171,7 +168,6 @@ export function DebitAlertComp() {
                         </div>
                     </div>
 
-                    {/* Send Button */}
                     <Button
                         onClick={debitTransfer}
                         disabled={!userBankAcctInfo || userBankAcctInfo.length === 0}
