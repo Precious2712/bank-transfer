@@ -50,25 +50,25 @@ export default function WelcomePage() {
                     </h1>
 
                     <h1 className="font-mono font-bold text-blue-700 text-3xl">
-                        Money Bank
+                        Wallet Transfer
                     </h1>
 
                     <p className="text-white leading-relaxed mt-2">
-                        Your trusted partner in building a secure financial future. Experience banking that puts your dreams first.
+                        Your trusted partner in building a secure wallet future. Experience banking that puts your dreams first.
                     </p>
                 </div>
 
                 <div className="hidden lg:block text-white">
                     <h1 className="font-lora text-7xl font-bold">
-                        Welcome to Money
+                        Welcome to Wallet
                     </h1>
 
                     <h1 className="font-mono text-6xl font-bold text-blue-600 text-pretty mt-2">
-                        Bank
+                        Fund
                     </h1>
 
                     <p className=" leading-relaxed text-gray-500 text-pretty font-bold font-sans mt-2">
-                        Your trusted partner in building a secure financial future. Experience banking that puts your dreams first.
+                        Your trusted partner in building a secure wallet future. Experience banking that puts your dreams first.
                     </p>
                 </div>
 

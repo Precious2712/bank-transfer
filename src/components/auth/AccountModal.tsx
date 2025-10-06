@@ -78,7 +78,7 @@ export function AccountModal({ closeModal }: AccountModalProps) {
       }
 
       console.log("Data being sent to backend:", obj)
-      const res = await axios.post("https://bank-transfer-cyan.vercel.app/bank-account/create", obj)
+      const res = await axios.post("https://money-transfer-1.onrender.com/bank-account/create", obj)
       console.log("response", res);
       if (res) {
         toast(`${res.data.userBankAcctData.firstName} account open successfully`);
