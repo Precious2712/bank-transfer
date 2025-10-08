@@ -39,13 +39,16 @@ export default function OpenBankAccountPage() {
 
                     <p className="mb-1">We&apos;re excited to have you on board.</p>
                     <p className="mb-1">
-                        Opening your account is the first step toward smarter, safer, and more convenient banking.
+                        Opening your account is the first step toward,
                     </p>
-                    <p className="mb-4">
+                    <p>
+                        smarter, safer, and more convenient banking.
+                    </p>
+                    {/* <p className=" mb-4">
                         Let&apos;s get started on building your financial journey with us!
-                    </p>
+                    </p> */}
 
-                    <Button onClick={openAccount} className="bg-yellow-400 text-black hover:bg-yellow-300 cursor-pointer">
+                    <Button onClick={openAccount} className="bg-yellow-400 text-black hover:bg-yellow-300 cursor-pointer mt-2">
                         Open Bank Account
                     </Button>
                 </div>

@@ -83,7 +83,7 @@ export function AccountModal({ closeModal }: AccountModalProps) {
       if (res) {
         toast(`${res.data.userBankAcctData.firstName} account open successfully`);
         setCreated(true);
-        router.push('/BankAccount/profile');
+        router.push('/bank-account');
       }
     } catch (error) {
       setIsLoading(false)
@@ -226,6 +226,7 @@ export function AccountModal({ closeModal }: AccountModalProps) {
 
                 {index > 0 && index <= others.length && (
                   <BankData
+                    key={others[index - 1].name}
                     name={others[index - 1].name}
                     label={others[index - 1].label}
                     placeholder={others[index - 1].placeholder}

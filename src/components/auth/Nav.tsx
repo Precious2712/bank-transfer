@@ -47,7 +47,7 @@ export default function Nav() {
                     className={`fixed z-50 top-0 w-full ${scrolled ? "bg-gradient-to-br from-rose-100 via-rose-200 to-rose-30  backdrop-blur-md" : "bg-transparent"
                         } border-b border-white/20 py-3 px-2 flex justify-between items-center transition-colors duration-300`}
                 >
-                    <h1 className="text-white">{emali ? `${emali}` : "Hi Guest"}</h1>
+                    <h1 className="text-white text-xs font-bit-count font-bold">{emali ? `${emali}` : "Hi Guest"}</h1>
                     <Button onClick={handleNav}>
                         <Menu />
                     </Button>
@@ -57,10 +57,16 @@ export default function Nav() {
                 {nav && (
                     <>
                         <div
-                            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+                            className="fixed inset-0 bg-black/40  z-40"
                             onClick={handleNav}
                         />
-                        <div className="fixed top-0 left-0 z-50 w-[65%] h-full bg-gradient-to-br from-gray-900 via-rose-800 to-black shadow-lg py-6 px-3 flex flex-col gap-4 text-xs">
+                        <div className="fixed top-0 left-0 z-50 w-[65%] h-full bg-red-400 shadow-lg py-6 px-3 flex flex-col gap-4 text-xs font-bold font-sans">
+                            <Link href="/bank-account">
+                                <Button className="w-full flex justify-start p-3 rounded-2xl shadow bg-transparent hover:bg-transparent ring focus:to-blue-50">
+                                    <Send className="w-5 h-5 text-blue-500" />
+                                    <span className="text-xs font-sans">Home</span>
+                                </Button>
+                            </Link>
                             <Link href="/transfer">
                                 <Button className="w-full flex justify-start p-3 rounded-2xl shadow bg-transparent hover:bg-transparent ring focus:to-blue-50">
                                     <Send className="w-5 h-5 text-blue-500" />
@@ -84,14 +90,14 @@ export default function Nav() {
                             <div className="relative">
                                 <Button
                                     onClick={() => setDropDown(!dropDown)}
-                                    className="w-full flex justify-start items-center gap-1.5 cursor-pointer rounded-2xl bg-transparent shadow hover:bg-transparent border ring focus:to-blue-50"
+                                    className="w-full flex justify-between items-center gap-1.5 cursor-pointer rounded-2xl bg-transparent shadow hover:bg-transparent border ring focus:to-blue-50"
                                 >
                                     <span>Transactions</span>
                                     <ChevronDown className="w-4 h-4" />
                                 </Button>
 
                                 {dropDown && (
-                                    <div className="bg-transparent py-2 px-3 shadow-2xl rounded-[5px] ml-4 mt-2 flex flex-col gap-5">
+                                    <div className="bg-transparent py-2 px-3 shadow-2xl rounded-[5px] ml-4 mt-2 flex flex-col gap-5 text-white font-bold font-sans">
                                         <Link href='/transactions'>
                                             Credit Transaction
                                         </Link>
@@ -125,6 +131,9 @@ export default function Nav() {
                     <h1 className={`${scrolled ? 'text-white' : 'text-[#8888] font-bold font-bit-count'} text-xs `}>{emali ? `${emali}` : "Hi Guest"}</h1>
 
                     <ul className={`flex gap-3 font-bold text-xs font-bit-count ${scrolled ? 'text-white' : 'text-[#8888]'}`}>
+                        <Link href='/bank-account'>
+                            <span>Home</span>
+                        </Link>
                         <Link href='/transfer'>
                             <span>Send Money</span>
                         </Link>
