@@ -7,7 +7,7 @@ import { DebitAlertComp } from "@/components/BankAccountData/DebitAlertComp";
 export default function TransferFundComp() {
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-rose-800 to-black pb-16">
+        <div className="min-h-screen bg-sky-900 pb-16">
             <Nav />
 
             <div>

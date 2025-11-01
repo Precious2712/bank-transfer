@@ -3,6 +3,7 @@ import { useAppContext } from "@/components/useContext/useContext";
 import styles from "./NoScroll/hide-scroll.module.scss";
 import axios, { isAxiosError } from "axios";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export function DebitHistory() {
     const { debitRef, isRolling } = useAppContext();
@@ -18,18 +19,32 @@ export function DebitHistory() {
     if (!debitRef) {
         return (
             <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex flex-col justify-center items-center">
-                <h1 className="text-7xl font-extrabold tracking-widest">404</h1>
-                <p className="mt-6 rounded-2xl bg-red-600 px-6 py-3 text-white font-medium shadow-lg hover:bg-red-700 transition">
-                    Debit transaction history not found
+                <h1 className="text-9xl font-extrabold tracking-widest">404</h1>
+
+                <div className="bg-sky-500 px-2 text-sm rounded rotate-12 absolute">
+                    Page Not Found
+                </div>
+
+                <p className="mt-6 text-lg text-gray-300">
+                    Oops! Account not found
                 </p>
+
+                <div className="mt-8">
+                    <Link
+                        href="/bank-account"
+                        className="relative inline-block px-6 py-3 font-semibold text-sky-900 bg-sky-400 rounded-lg shadow-lg transition hover:bg-sky-300"
+                    >
+                        Go Home
+                    </Link>
+                </div>
             </div>
         )
     }
 
     async function handleDeleteDebitRef(id: string) {
         console.log(id);
-        
-        const cleanId = id.trim(); 
+
+        const cleanId = id.trim();
         if (!/^[0-9a-fA-F]{24}$/.test(cleanId)) {
             toast.error("Invalid ObjectId format");
             return;

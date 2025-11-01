@@ -60,7 +60,7 @@ export default function Nav() {
                             className="fixed inset-0 bg-black/40  z-40"
                             onClick={handleNav}
                         />
-                        <div className="fixed top-0 left-0 z-50 w-[65%] h-full bg-red-400 shadow-lg py-6 px-3 flex flex-col gap-4 text-xs font-bold font-sans">
+                        <div className="fixed top-0 left-0 z-50 w-[65%] h-full bg-sky-950 shadow-lg py-6 px-3 flex flex-col gap-4 text-xs font-bold font-sans">
                             <Link href="/bank-account">
                                 <Button className="w-full flex justify-start p-3 rounded-2xl shadow bg-transparent hover:bg-transparent ring focus:to-blue-50">
                                     <Send className="w-5 h-5 text-blue-500" />

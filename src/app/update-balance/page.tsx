@@ -8,7 +8,7 @@ export default function UpdateBalancePage() {
 
 
     return (
-        <div className=" bg-gradient-to-br from-gray-900 via-rose-800 to-black min-h-screen pb-16">
+        <div className=" bg-sky-900 min-h-screen pb-16">
             <Nav />
 
             <div>

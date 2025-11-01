@@ -53,6 +53,7 @@ export function AccountModal({ closeModal }: AccountModalProps) {
 
   async function onSubmit(value: UserAccountData) {
     try {
+      alert();
       setIsLoading(true)
       const _id = localStorage.getItem("id");
       const email = localStorage.getItem("email");

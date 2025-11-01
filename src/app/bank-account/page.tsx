@@ -16,7 +16,7 @@ export default function OpenBankAccountPage() {
     }
 
     return (
-        <div className="relative z-20 bg-gradient-to-br from-gray-900 via-rose-800 to-black">
+        <div className="relative z-20 bg-sky-950">
             <Nav />
             <div className="flex flex-col items-center justify-center min-h-screen  text-[#676767] text-pretty">
 
