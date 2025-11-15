@@ -10,9 +10,7 @@ export default function TransferFundComp() {
         <div className="min-h-screen bg-sky-900 pb-16">
             <Nav />
 
-            <div>
-                <DebitAlertComp/>
-            </div>
+            <DebitAlertComp />
         </div>
     );
 }

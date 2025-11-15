@@ -11,9 +11,7 @@ export default function UpdateBalancePage() {
         <div className=" bg-sky-900 min-h-screen pb-16">
             <Nav />
 
-            <div>
-                <CreditAlertComp/>
-            </div>
+            <CreditAlertComp />
         </div>
     )
 }

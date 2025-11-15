@@ -12,6 +12,7 @@ import { banks } from "@/data/bank/bakName";
 import { CheckCircle, Loader2, Shield } from "lucide-react";
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
+import { useState } from "react";
 
 export function DebitAlertComp() {
     const { setBankName, bankName, accountNo, setAccountNo, searchField, loading, userBankAcctInfo, currentBal, setFund, fund, debitTransfer } = useAppContext();
@@ -31,7 +32,7 @@ export function DebitAlertComp() {
     };
 
     return (
-        <div className="w-[90%] m-auto pt-20 lg:w-[55%]">
+        <div className="w-[80%] m-auto pt-20 md:w-[450px] lg:w-[800px]">
             <div className="rounded-2xl shadow-xl overflow-hidden">
 
                 <div className=" px-4 py-6 md:px-6 md:py-6">

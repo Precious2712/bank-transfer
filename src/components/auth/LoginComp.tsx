@@ -67,7 +67,7 @@ export function LoginComp() {
                 <ArrowBigLeft className="mt-1 w-5 h-5" />
             </Link>
             <div className="flex justify-center items-center min-h-screen">
-                <div className="w-[94%] md:w-[40%] lg:w-[30%]">
+                <div className="w-[90%] md:w-[400px]  bg-transparent">
                     <h1 className="text-2xl md:text-4xl font-bold font-mono text-center text-pretty">Welcome Back!!</h1>
                     <div className="bg-transparent shadow-2xl rounded-[10px]  p-6 border-b-white hover:border-b-blue-600 border-b-[4px]">
                         <Form {...form}>

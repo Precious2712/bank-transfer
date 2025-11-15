@@ -62,7 +62,7 @@ export function SignupComp() {
                 <ArrowBigLeft className="mt-1 w-5 h-5" />
             </Link>
             <div className="flex justify-center items-center min-h-screen">
-                <div className="w-[94%] md:w-[40%] lg:w-[30%] bg-transparent">
+                <div className="w-[90%] md:w-[400px]  bg-transparent">
                     <h1 className="text-2xl md:text-4xl font-bold font-mono text-center text-pretty">
                         Create Account
                     </h1>

@@ -53,7 +53,6 @@ export function AccountModal({ closeModal }: AccountModalProps) {
 
   async function onSubmit(value: UserAccountData) {
     try {
-      alert();
       setIsLoading(true)
       const _id = localStorage.getItem("id");
       const email = localStorage.getItem("email");
@@ -188,7 +187,7 @@ export function AccountModal({ closeModal }: AccountModalProps) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black opacity-90 flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-black/65  flex justify-center items-center z-50">
       <div className="relative rounded-lg shadow-lg border p-4 w-[90%] lg:w-[50%] bg-transparent text-white">
         <button onClick={closeModal} className="absolute top-3 right-3 text-gray-500 hover:text-gray-800">
           <X className="w-6 h-6" />
@@ -257,8 +256,9 @@ export function AccountModal({ closeModal }: AccountModalProps) {
                     </Button>
 
                     <Button
-                      className="h-7 bg-green-600 text-white w-full"
+                      className="h-7 bg-green-600 text-white w-full hover:bg-blue-900"
                       type="submit"
+                      variant='outline'
                       disabled={isLoading || created || !form.getValues("bankName") || !form.getValues("gender")}
                     >
                       {isLoading ? "loading" : "submit"}
